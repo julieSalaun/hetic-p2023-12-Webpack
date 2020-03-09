@@ -10,23 +10,24 @@ module.exports = {
     {
         contentBase: './dist',
         open: true,
-        host: '0.0.0.0'
-    },
-    entry: path.resolve(__dirname, '../src/index.js'),
-    output:
-    {
-        filename: 'bundle.[hash].js',
-        path: path.resolve(__dirname, '../dist')
+        host: '0.0.0.0',
+        useLocalIp: true
     },
     plugins:
     [
-        new CopyWebpackPlugin([{ from: 'static' }]),
+        new CopyWebpackPlugin([ { from: 'static' } ]),
         new MiniCssExtractPlugin(),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../src/index.html')
         })
     ],
+    entry: path.resolve(__dirname, '../src/index.js'),
+    output:
+    {
+        filename: 'bundle.[hash].js',
+        path: path.resolve(__dirname, '../dist')
+    },
     module:
     {
         rules:
